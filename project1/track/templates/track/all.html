@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>List Tracks</title>
+</head>
+<body>
+<!--{{tracksdata}}-->
+<table border="1">
+    <tr>
+        <th>      id       </th>
+        <th>      Name       </th>
+        <th>      Actions       </th>
+    </tr>
+    {%for track in tracksdata%}
+    {%if track.1 <> 'iot'%}
+   <tr>
+       <td>{{track.0}}</td>
+       <td>{{track.1}}</td>
+       <td>
+           <a href="">delete</a>
+           <a href="">update</a>
+       </td>
+   </tr>
+    {%endif%}
+{%endfor%}
+</table>
+
+</body>
+</html>

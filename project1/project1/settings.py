@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     #not fomral
     'track',
-    # 'myaccount',#views,urls,templates
     #profeessional
     'myaccount.apps.MyaccountConfig'
 

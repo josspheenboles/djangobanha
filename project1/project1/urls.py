@@ -17,9 +17,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from myaccount.views import Loginview
-
+from myaccount.views import *
+from track.views import *
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('Login',Loginview)
+    path('Login',Loginview),
+    path('Register',Registerview),
+    path('Track/',getalltracks),
+    path('Track/New/',addtrack),
+    path('Track/Update/<int:id>/',updatetrack),
+
 ]

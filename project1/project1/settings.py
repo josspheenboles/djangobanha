@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -39,13 +40,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    #not fomral
+    # not fomral
     'track',
+
     #profeessional
-    'myaccount.apps.MyaccountConfig'
+    'myaccount.apps.MyaccountConfig',
+
 
 ]
-
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -61,8 +63,8 @@ ROOT_URLCONF = 'project1.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
-        'APP_DIRS': True,
+        'DIRS': [BASE_DIR/'templates/'],#path to templeates
+        'APP_DIRS': True,#search inside each app for dir call temples
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',

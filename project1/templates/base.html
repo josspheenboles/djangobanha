@@ -1,0 +1,27 @@
+<title>
+    {%block title%}
+    BAse Page
+    {%endblock%}
+</title>
+<table width="100" height="100" border="1">
+    <tr>
+        <td>
+            <h1>header</h1>
+        </td>
+    </tr>
+    <tr>
+       {%block content%}
+        <h1>content</h1>
+        {%endblock%}
+    </tr>
+    <tr>
+        <td>
+            <h1>footer</h1>
+        </td>
+    </tr>
+</table>
+<script>
+{%block js%}
+alert('hi js block');
+{%endblock%}
+    </script>

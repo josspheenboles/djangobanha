@@ -7,4 +7,4 @@ class Trainee(models.Model):
     email=models.EmailField(unique=True)
     createdate=models.DateField(auto_now_add=True)
     # stor path in db & file in media
-    image = models.ImageField()
+    image = models.ImageField(upload_to='trainee/imgs')

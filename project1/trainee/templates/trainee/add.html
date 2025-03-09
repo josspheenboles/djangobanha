@@ -8,7 +8,7 @@ Trainees -New
 
 {%block content%}
 <h1>Welcome to add new trainee</h1>
-<form method="post">
+<form method="post" enctype="multipart/form-data">
     {%csrf_token%}
     <label>Name:</label>
     <input type="text" name="trname" required>
@@ -17,7 +17,9 @@ Trainees -New
     <input type="text" name="tremail" required>
     </br>
     <label>Profile Image:</label>
-    <input type="file" name="trimg" required>
+
+    <label for="trimg">File:</label>
+        <input type="file" id="trimg" name="trimg"><br><br>
     </br>
     <input type="submit" value="Add Trainee">
 </form>

@@ -8,11 +8,13 @@ def add(req):
         trname=req.POST['trname']
         tremail=req.POST['tremail']
         #upload image
-        trimg=req.FILES.get('trimg')
+        print(req.FILES)
+        trimg=req.FILES['trimg']
+
         obj=Trainee()
         obj.name=trname
         obj.email=tremail
-        obj.image=req.POST['trimg']
+        obj.image=trimg
         obj.save()
     return render(req,'trainee/add.html')
 def update(req,id):

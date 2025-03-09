@@ -21,6 +21,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     #ref to urls app track
     path('Track/',include('track.urls')),
+    #ref to urls app trainee
+    path('Trainee/',include('trainee.urls')),
     #ref to urls app myaccount
     path('',include('myaccount.urls')),
 

@@ -9,6 +9,7 @@ def getalltracks(req):
         [2, 'os'],
         [3, 'python'],
     ]
+    print(context,type(context))
     # return HttpResponse('<h1>getalltracks</h1>')
     return  render(req,'track/all.html',context)
 def addtrack(req):

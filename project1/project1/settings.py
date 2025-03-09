@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 from pathlib import Path
 
+from django.conf.global_settings import MEDIA_URL, MEDIA_ROOT
+
 import myaccount.apps
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -135,3 +137,5 @@ STATICFILES_DIRS=['static/']
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+MEDIA_URL='media/'
+MEDIA_ROOT=BASE_DIR/'media/'

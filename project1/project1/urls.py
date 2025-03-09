@@ -16,7 +16,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
-
+from django.conf import settings
+from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     #ref to urls app track
@@ -25,6 +26,4 @@ urlpatterns = [
     path('Trainee/',include('trainee.urls')),
     #ref to urls app myaccount
     path('',include('myaccount.urls')),
-
-
-]
+]+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

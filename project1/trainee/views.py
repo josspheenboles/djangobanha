@@ -1,8 +1,11 @@
-from django.shortcuts import render
+from django.http import HttpResponseRedirect
+from django.shortcuts import render,redirect
 from .models import *
 # Create your views here.
 def alltrainees(req):
-    return render(req,'trainee/all.html')
+    #get all trainees
+    context={'trainees':Trainee.objects.all()}
+    return render(req,'trainee/all.html',context)
 def add(req):
     if(req.method=='POST'):
         # trname=req.POST['trname']
@@ -20,4 +23,9 @@ def add(req):
 def update(req,id):
     return render(req,'trainee/update.html')
 def deletetr(req,id):
-    return render(req,'trainee/update.html')
+    #hard delete--->no
+    # Trainee.objects.filter(id=id).delete()
+    #soft Delete
+
+    # return HttpResponseRedirect('/Trainee/')
+    return redirect('alltrainees')

@@ -8,3 +8,4 @@ class Trainee(models.Model):
     createdate=models.DateField(auto_now_add=True)
     # stor path in db & file in media
     image = models.ImageField(upload_to='trainee/imgs')
+    Active=models.BooleanField(default=True)

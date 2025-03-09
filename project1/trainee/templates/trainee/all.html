@@ -7,6 +7,31 @@ TRainees
 {%endblock%}
 
 {%block content%}
+<h1>trainees</h1>
+<table border="1" width="100%">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>email</th>
+        <th>Creattion Date</th>
+        <th>Image</th>
+        <th>Actions</th>
+    </tr>
+    {%for trainee in trainees%}
+     <tr>
+        <td>{{trainee.id}}</td>
+        <td>{{trainee.name}}</td>
+        <td>{{trainee.email}}</td>
+        <td>{{trainee.createdate}}</td>
+        <td>{{trainee.image}}</td>
+         <td>
+             <a href="{%url 'trupdate' trainee.id%}">update</a>
+             <a href="{%url 'deletetr'  trainee.id%}">delete</a>
+         </td>
+    </tr>
+</br>
+{%endfor%}
+</table>
 
 {%endblock%}
 

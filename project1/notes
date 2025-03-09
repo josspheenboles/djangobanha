@@ -1,0 +1,28 @@
+pip install virtualenv
+virtualenv .venv
+source .venv/bin/activate
+
+#install django
+pip install django
+====Database & models
+#install psycopg2
+pip install psycopg2-binary
+#manage.py --->
+python manage.py makemigrations
+python manage.py migrate
+python manage.py shell
+#creat dir media
+#settings media
+MEDIA_URL='media/'
+MEDIA_ROOT=BASE_DIR/'media'
+#master url
+from django.conf.urls.static import  static
+from django.conf import settings
++ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+#model upload image
+image=models.ImageField(upload_to='trainee/imgs')
+#install
+ pip install Pillow
+ #admin portal
+
+

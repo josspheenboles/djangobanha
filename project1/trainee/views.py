@@ -8,9 +8,7 @@ def add(req):
         trname=req.POST['trname']
         tremail=req.POST['tremail']
         #upload image
-        print(req.FILES)
         trimg=req.FILES['trimg']
-
         obj=Trainee()
         obj.name=trname
         obj.email=tremail

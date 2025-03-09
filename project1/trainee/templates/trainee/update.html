@@ -3,10 +3,25 @@
 
 {%endblock%}
 {%block title%}
-Trainees -Update
+Trainees - Update
 {%endblock%}
 
 {%block content%}
-content
+<h1>Welcome to  Update trainee</h1>
+<form method="post" enctype="multipart/form-data">
+    {%csrf_token%}
+    <label>Name:</label>
+    <input type="text" name="trname" value="{{oldtr.name}}" required>
+    </br>
+    <label>Email:</label>
+    <input type="text" name="tremail" value="{{oldtr.email}}" required>
+    </br>
+    <label>Profile Image:</label>
+
+    <label for="trimg">File:</label>
+        <input type="file" id="trimg" name="trimg"><br><br>
+    </br>
+    <input type="submit" value="Update Trainee">
+</form>
 {%endblock%}
 

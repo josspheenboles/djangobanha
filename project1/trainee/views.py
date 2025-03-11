@@ -17,18 +17,22 @@ def add(req):
         # obj.email=tremail
         # obj.image=trimg
         # obj.save()
+
         Trainee.objects.create(name=req.POST['trname'],email=req.POST['tremail'],
-                               image=req.FILES['trimg'])
+                               image=req.FILES['trimg'],
+                               )
     return render(req,'trainee/add.html')
 def update(req,id):
     context={}
     #get trainee data
     context['oldtr']=Trainee.objects.get(id=id)
     if(req.method=='POST'):
+        print(req.POST['trtrack'])# 1
         Trainee.objects.filter(id=id).update(
             name=req.POST['trname'],
             email=req.POST['tremail'],
-            image=req.FILES['trimg']
+            image=req.FILES['trimg'],
+
         )
         return redirect('alltrainees')
     return render(req,'trainee/update.html',context)

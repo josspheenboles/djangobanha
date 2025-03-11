@@ -1,0 +1,3 @@
+edit to add view but i edit in update
+update to trainee model (add fk) --->forget makemigration & migrate
+#receiver select value int ----> must be object of track

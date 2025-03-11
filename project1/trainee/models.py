@@ -1,5 +1,5 @@
 from django.db import models
-# from track.models import Track
+from track.models import Track
 
 
 # Create your models here.
@@ -11,3 +11,5 @@ class Trainee(models.Model):
     # stor path in db & file in media
     image = models.ImageField(upload_to='trainee/imgs')
     Active=models.BooleanField(default=True)
+    #fk to track model note --->object of track
+    track=models.ForeignKey(to=Track,on_delete=models.CASCADE)

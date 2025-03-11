@@ -4,12 +4,12 @@ from track.models import Track
 
 # Create your models here.
 class Trainee(models.Model):
-    id=models.AutoField(primary_key=True)
-    name=models.CharField(max_length=100,null=False)
-    email=models.EmailField(unique=True)
+    id=models.AutoField(primary_key=True)#not appear
+    name=models.CharField(max_length=100,null=False)#charfile max100 required
+    email=models.EmailField(unique=True)#email files
     createdate=models.DateField(auto_now_add=True)
     # stor path in db & file in media
-    image = models.ImageField(upload_to='trainee/imgs',null=True)
+    image = models.ImageField(upload_to='trainee/imgs',null=True)#filefiled
     Active=models.BooleanField(default=True)
     #fk to track model note --->object of track
     track=models.ForeignKey(to=Track,on_delete=models.CASCADE)

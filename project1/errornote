@@ -1,3 +1,10 @@
 edit to add view but i edit in update
 update to trainee model (add fk) --->forget makemigration & migrate
 #receiver select value int ----> must be object of track
+
+=====>
+add fk to model (track)
+makemigration&migrate
+add select in template --->show tracks in db
+in add view --->conver track id to object of track model
+in add view --->pass track object to create funcit

@@ -13,3 +13,7 @@ class Trainee(models.Model):
     Active=models.BooleanField(default=True)
     #fk to track model note --->object of track
     track=models.ForeignKey(to=Track,on_delete=models.CASCADE)
+
+    @classmethod
+    def getalltrainee(cls):
+        return  cls.objects.filter(Active=True)

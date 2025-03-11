@@ -8,3 +8,6 @@ makemigration&migrate--->ok
 add select in template --->show tracks in db--->ok
 in add view --->conver track id to object of track model
 in add view --->pass track object to create funcit
+
+--->
+view get all trainees

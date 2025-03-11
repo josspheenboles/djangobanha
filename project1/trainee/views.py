@@ -4,7 +4,7 @@ from .models import *
 # Create your views here.
 def alltrainees(req):
     #get all trainees
-    context={'trainees':Trainee.objects.filter(Active=True)}
+    context={'trainees':Trainee.getalltrainee()}
     return render(req,'trainee/all.html',context)
 def add(req):
     context={}

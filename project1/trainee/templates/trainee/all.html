@@ -15,6 +15,7 @@ TRainees
         <th>email</th>
         <th>Creattion Date</th>
         <th>Image</th>
+        <th>Track</th>
         <th>Actions</th>
     </tr>
     {%for trainee in trainees%}
@@ -24,6 +25,7 @@ TRainees
         <td>{{trainee.email}}</td>
         <td>{{trainee.createdate}}</td>
         <td>{{trainee.image}}</td>
+        <td>{{trainee.track.name}}</td>
          <td>
              <a href="{%url 'trupdate' trainee.id%}">update</a>
              <a href="{%url 'deletetr'  trainee.id%}">delete</a>

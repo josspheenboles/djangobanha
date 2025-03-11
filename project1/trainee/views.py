@@ -1,6 +1,6 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render,redirect
-
+from .forms import TraineeForm
 import track.views
 from .models import *
 # Create your views here.
@@ -9,7 +9,7 @@ def alltrainees(req):
     context={'trainees':Trainee.getalltrainee()}
     return render(req,'trainee/all.html',context)
 def add(req):
-    context={}
+    context={'form':TraineeForm()}
     context['tracks']=Track.getalltracks()
     if(req.method=='POST'):
         if('trimg' in req.FILES.keys()):
@@ -20,7 +20,7 @@ def add(req):
                                    )
         else:
             context['Error']='Must upload profie image'
-    return render(req,'trainee/add.html',context)
+    return render(req,'trainee/addFomr.html',context)
 def update(req,id):
     context={'tracks':Track.getalltracks()}
     #get trainee data

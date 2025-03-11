@@ -10,11 +10,14 @@ def add(req):
     context={}
     context['tracks']=Track.getalltracks()
     if(req.method=='POST'):
-        objectoftrack=Track.gettrackbyid(id)
-        Trainee.objects.create(name=req.POST['trname'],email=req.POST['tremail'],
-                               image=req.FILES['trimg'],
-                               track=objectoftrack
-                               )
+        if('trimg' in req.FILES.keys()):
+            objectoftrack=Track.gettrackbyid(req.POST['trtrack'])
+            Trainee.objects.create(name=req.POST['trname'],email=req.POST['tremail'],
+                                   image=req.FILES['trimg'],
+                                   track=objectoftrack
+                                   )
+        else:
+            context['Error']='Must upload profie image'
     return render(req,'trainee/add.html',context)
 def update(req,id):
     context={}

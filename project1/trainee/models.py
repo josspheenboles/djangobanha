@@ -17,3 +17,6 @@ class Trainee(models.Model):
     @classmethod
     def getalltrainee(cls):
         return  cls.objects.filter(Active=True)
+    @classmethod
+    def gettraineebyid(cls,id):
+        return cls.objects.get(id=id)

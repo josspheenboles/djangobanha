@@ -1,5 +1,7 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render,redirect
+
+import track.views
 from .models import *
 # Create your views here.
 def alltrainees(req):
@@ -22,13 +24,15 @@ def add(req):
 def update(req,id):
     context={'tracks':Track.getalltracks()}
     #get trainee data
-    context['oldtr']=Trainee.objects.get(id=id)
+    context['oldtr']=Trainee.gettraineebyid(id=id)
+
     if(req.method=='POST'):
-        print(req.POST['trtrack'])# 1
+
         Trainee.objects.filter(id=id).update(
             name=req.POST['trname'],
             email=req.POST['tremail'],
             image=req.FILES['trimg'],
+            track=Track.gettrackbyid(req.POST['trtrack'])
 
         )
         return redirect('alltrainees')

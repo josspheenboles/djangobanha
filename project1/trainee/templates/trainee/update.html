@@ -19,7 +19,11 @@ Trainees - Update
      <label>Track:</label>
         <select name="trtrack">
             {%for track in tracks%}
-                <option value="{{track.id}}">{{track.name}}</option>
+                {%if track.id == oldtr.track.id %}
+                    <option selected value="{{track.id}}">{{track.name}}</option>
+                {%else%}
+                    <option  value="{{track.id}}">{{track.name}}</option>
+                {%endif%}
             {%endfor%}
         </select>
     </br>

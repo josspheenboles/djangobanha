@@ -10,3 +10,7 @@ class Track(models.Model):
     @classmethod
     def getalltracks(cls):
         return cls.objects.all()
+
+    @classmethod
+    def gettrackbyid(cls,id):
+        return cls.objects.get(id=id)

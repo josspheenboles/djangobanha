@@ -20,7 +20,7 @@ def add(req):
             context['Error']='Must upload profie image'
     return render(req,'trainee/add.html',context)
 def update(req,id):
-    context={}
+    context={'tracks':Track.getalltracks()}
     #get trainee data
     context['oldtr']=Trainee.objects.get(id=id)
     if(req.method=='POST'):

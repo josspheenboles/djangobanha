@@ -6,3 +6,7 @@ class Track(models.Model):
     #charfiled,emailfiled,url--->max_length
     name=models.CharField(max_length=50,
                           null=False,db_column='Name')
+
+    @classmethod
+    def getalltracks(cls):
+        return cls.objects.all()

@@ -18,7 +18,9 @@ Trainees -New
     </br>
     <label>Track:</label>
         <select name="trtrack">
-
+            {%for track in tracks%}
+                <option value="{{track.id}}">{{track.name}}</option>
+            {%endfor%}
         </select>
     </br>
     <label>Profile Image:</label>

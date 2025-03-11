@@ -7,21 +7,14 @@ def alltrainees(req):
     context={'trainees':Trainee.objects.filter(Active=True)}
     return render(req,'trainee/all.html',context)
 def add(req):
+    context={}
+    context['tracks']=Track.getalltracks()
     if(req.method=='POST'):
-        # trname=req.POST['trname']
-        # tremail=req.POST['tremail']
-        # #upload image
-        # trimg=req.FILES['trimg']
-        # obj=Trainee()
-        # obj.name=trname
-        # obj.email=tremail
-        # obj.image=trimg
-        # obj.save()
 
         Trainee.objects.create(name=req.POST['trname'],email=req.POST['tremail'],
                                image=req.FILES['trimg'],
                                )
-    return render(req,'trainee/add.html')
+    return render(req,'trainee/add.html',context)
 def update(req,id):
     context={}
     #get trainee data

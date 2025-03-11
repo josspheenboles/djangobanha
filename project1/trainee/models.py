@@ -9,7 +9,7 @@ class Trainee(models.Model):
     email=models.EmailField(unique=True)
     createdate=models.DateField(auto_now_add=True)
     # stor path in db & file in media
-    image = models.ImageField(upload_to='trainee/imgs')
+    image = models.ImageField(upload_to='trainee/imgs',null=True)
     Active=models.BooleanField(default=True)
     #fk to track model note --->object of track
     track=models.ForeignKey(to=Track,on_delete=models.CASCADE)

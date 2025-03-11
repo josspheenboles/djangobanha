@@ -9,6 +9,7 @@ def alltrainees(req):
     context={'trainees':Trainee.getalltrainee()}
     return render(req,'trainee/all.html',context)
 def add(req):
+
     context={'form':TraineeForm()}
     context['tracks']=Track.getalltracks()
     if(req.method=='POST'):

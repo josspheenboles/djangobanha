@@ -18,14 +18,14 @@ def add(req):
         form=TraineeForm(data=req.POST,files=req.FILES)
         if(form.is_bound  and form.is_valid()):
             Trainee.objects.create(
-                name=req.POST['trname'],
+                name=form.fileds['trname'],
                 email=req.POST['tremail'],
                 track=Track.gettrackbyid(req.POST['trtrack']),
                 image=req.FILES['trimag']
             )
-
+            print(form.fileds)
         else:
-            context['error']='form not loaded with data'
+            context['error']=form.errors#'form not loaded with data'
     return render(req,'trainee/addFomr.html',context)
 def alltrainees(req):
     #get all trainees

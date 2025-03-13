@@ -51,8 +51,9 @@ def addtr(req):
 def update(req,id):
     context={'tracks':Track.getalltracks()}
     #get trainee data
-    context['oldtr']=Trainee.gettraineebyid(id=id)
-
+    # context['oldtr']=Trainee.gettraineebyid(id=id)
+    form=TraineeFormModel(instance=Trainee.gettraineebyid(id=id))
+    context['form']=form
     if(req.method=='POST'):
         # oldobj=get_object_or_404(Trainee,id=id)#return error 404
         # oldobj=Trainee.objects.get(id=id)#fire exeptopn if id not exsis

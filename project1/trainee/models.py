@@ -12,7 +12,7 @@ class Trainee(models.Model):
     Active=models.BooleanField(default=True)
     #fk to track model note --->object of track
     track=models.ForeignKey(to=Track,on_delete=models.CASCADE)
-    test=models.IntegerField()
+    # test=models.IntegerField()
 
     @classmethod
     def getalltrainee(cls):

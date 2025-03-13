@@ -12,12 +12,19 @@ from django.views import View
 class Addtrainee(View):
     #calling when view rqueste by get method
     def get(self,request):
-        print(request.method)
+        context={'tracks':Track.getalltracks()}
         return render(request,'trainee/add.html',context)
 
     # calling when view rqueste by post method
     def post(self, request):
-        print(request.post)
+        print('---POST req----')
+        Trainee.objects.create(name=request.POST['trname'],
+                               email=request.POST['tremail'],
+                               image=request.FILES['trimg'],
+                               track=Track.gettrackbyid(request.POST['trtrack']),
+
+                               )
+        return redirect('alltrainees')
 
 # Create your views here.
 def add(req):

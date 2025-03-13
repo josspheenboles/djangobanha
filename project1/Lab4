@@ -1,0 +1,5 @@
+trainee
+     list,deleet,showdetails--->generic view
+     update,create--->class based view
+     bounce
+     login,registration---->authincation

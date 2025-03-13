@@ -6,9 +6,9 @@ route--->
     projectname--->urls.py --->point to partial url include
     appname--->urls.py #partial url
 views--->
-    function based view
-    class based
-    generic
+    function based view--->ok
+    class based---->ok
+    generic---->ok
     view set--->self study
 teamplates
     templates tags--->for static extends if block url
@@ -46,3 +46,11 @@ command manage.py
     createsuperuser===>user login in admin panel
 admin panel
     access code and cahnge
+forms
+    forms.Form
+    forms.ModelForm
+auth&authz
+session
+api
+    serilzation,modelserilization
+    consume api

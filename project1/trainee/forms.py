@@ -1,7 +1,10 @@
 from django import forms
 from track.models import Track
 from .models import Trainee
-
+class TraineeFormModel(forms.ModelForm):
+    class Meta:
+        models=Trainee
+        fileds=['name','email']
 
 class TraineeForm(forms.Form):
     trname=forms.CharField(required=True,max_length=100,

@@ -8,6 +8,15 @@ import track.views
 from .models import Trainee
 from .forms import TraineeForm
 from django.views import View
+from django.views.generic import CreateView
+#generic view
+class AddtraineeG(CreateView):
+    model = Trainee
+    fields='__all__'
+    exclude = ['Active', ]
+    template_name = 'trainee/addFomr.html'
+    #check url execuate
+    success_url = Trainee.reversgotoalltraineesrout()
 #class Based view
 class Addtrainee(View):
     #calling when view rqueste by get method

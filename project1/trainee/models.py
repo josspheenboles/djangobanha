@@ -1,6 +1,7 @@
 from django.db import models
 from track.models import Track
 from django.shortcuts import redirect
+from django.urls import reverse_lazy
 # accsess class method or cerate object
 # Create your models here.
 class Trainee(models.Model):
@@ -40,5 +41,8 @@ class Trainee(models.Model):
     @staticmethod
     def gotoalltraineesroute():
         return redirect('alltrainees')
+    @staticmethod
+    def reversgotoalltraineesrout():
+        return reverse_lazy('alltrainees')
     def getimageurl(self):
-        return '/media/'+self.image
+        return '/media/'+str(self.image)

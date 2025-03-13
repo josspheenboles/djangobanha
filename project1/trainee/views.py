@@ -4,21 +4,29 @@ from .forms import TraineeForm
 from .models import Track
 import track.views
 from .models import Trainee
-
+from .forms import TraineeForm
 # Create your views here.
 def add(req):
+    # print()
     context={}
+    form=TraineeForm()
+    context['form']=form
     if(req.method=='POST'):
-        if(req.POST['trname'] is not None or req.POST['tremail'] is not None):
+        #form handel back end validation
+        #populate data to form
+        #get data inserted by end user & assign to form object
+        form=TraineeForm(data=req.POST,files=req.FILES)
+        if(form.is_bound  and form.is_valid()):
             Trainee.objects.create(
                 name=req.POST['trname'],
                 email=req.POST['tremail'],
                 track=Track.gettrackbyid(req.POST['trtrack']),
                 image=req.FILES['trimag']
             )
+
         else:
             context['error']='form not loaded with data'
-    return render(req,'trainee/add.html',context)
+    return render(req,'trainee/addFomr.html',context)
 def alltrainees(req):
     #get all trainees
     context={'trainees':Trainee.getalltrainee()}

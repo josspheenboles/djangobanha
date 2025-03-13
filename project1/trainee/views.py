@@ -1,6 +1,6 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render,redirect,get_object_or_404
-from .forms import TraineeForm
+from .forms import TraineeForm,TraineeFormModel
 from .models import Track
 import track.views
 from .models import Trainee
@@ -9,21 +9,22 @@ from .forms import TraineeForm
 def add(req):
     # print()
     context={}
-    form=TraineeForm()
+    form=TraineeFormModel()
     context['form']=form
     if(req.method=='POST'):
         #form handel back end validation
         #populate data to form
         #get data inserted by end user & assign to form object
-        form=TraineeForm(data=req.POST,files=req.FILES)
+        form=TraineeFormModel(data=req.POST,files=req.FILES)
         if(form.is_bound  and form.is_valid()):
-            Trainee.objects.create(
-                name=form.fileds['trname'],
-                email=req.POST['tremail'],
-                track=Track.gettrackbyid(req.POST['trtrack']),
-                image=req.FILES['trimag']
-            )
-            print(form.fileds)
+            form.save()
+            # Trainee.objects.create(
+            #     name=form.fileds['trname'],
+            #     email=req.POST['tremail'],
+            #     track=Track.gettrackbyid(req.POST['trtrack']),
+            #     image=req.FILES['trimag']
+            # )
+            # print(form.fileds)
         else:
             context['error']=form.errors#'form not loaded with data'
     return render(req,'trainee/addFomr.html',context)

@@ -3,8 +3,12 @@ from track.models import Track
 from .models import Trainee
 class TraineeFormModel(forms.ModelForm):
     class Meta:
-        models=Trainee
-        fileds=['name','email']
+        model=Trainee
+        fields='__all__'#['name','email']
+        exclude=['Active',]
+        label={            'name'               :'Full name'}
+        widget={'name':forms.TextInput()}
+
 
 class TraineeForm(forms.Form):
     trname=forms.CharField(required=True,max_length=100,

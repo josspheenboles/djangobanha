@@ -24,7 +24,10 @@ TRainees
         <td>{{trainee.name}}</td>
         <td>{{trainee.email}}</td>
         <td>{{trainee.createdate}}</td>
-        <td>{{trainee.image}}</td>
+        <td>
+            <img src="{{trainee.getimageurl}}" width="10%" height="10%">
+
+        </td>
         <td>{{trainee.track.name}}</td>
          <td>
              <a href="{%url 'trupdate' trainee.id%}">update</a>

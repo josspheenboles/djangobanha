@@ -24,7 +24,7 @@ class Addtrainee(View):
                                track=Track.gettrackbyid(request.POST['trtrack']),
 
                                )
-        return redirect('alltrainees')
+        return Trainee.gotoalltraineesroute()
 
 # Create your views here.
 def add(req):

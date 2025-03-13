@@ -1,5 +1,6 @@
 from django.db import models
 from track.models import Track
+from django.shortcuts import redirect
 # accsess class method or cerate object
 # Create your models here.
 class Trainee(models.Model):
@@ -36,3 +37,8 @@ class Trainee(models.Model):
         oldobjimage.track = Track.gettrackbyid(trackid)
         oldobj.save()
         Trainee.removeoldimage('trainee/img'+str(oldimage))
+    @staticmethod
+    def gotoalltraineesroute():
+        return redirect('alltrainees')
+    def getimageurl(self):
+        return '/media/'+self.image

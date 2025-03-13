@@ -1,10 +1,24 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render,redirect,get_object_or_404
+from django.template.context_processors import request
+
 from .forms import TraineeForm,TraineeFormModel
 from .models import Track
 import track.views
 from .models import Trainee
 from .forms import TraineeForm
+from django.views import View
+#class Based view
+class Addtrainee(View):
+    #calling when view rqueste by get method
+    def get(self,request):
+        print(request.method)
+        return render(request,'trainee/add.html',context)
+
+    # calling when view rqueste by post method
+    def post(self, request):
+        print(request.post)
+
 # Create your views here.
 def add(req):
     # print()

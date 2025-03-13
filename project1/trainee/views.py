@@ -6,11 +6,25 @@ import track.views
 from .models import Trainee
 
 # Create your views here.
+def add(req):
+    context={}
+    if(req.method=='POST'):
+        if(req.POST['trname'] is not None or req.POST['tremail'] is not None):
+            Trainee.objects.create(
+                name=req.POST['trname'],
+                email=req.POST['tremail'],
+                track=Track.gettrackbyid(req.POST['trtrack']),
+                image=req.FILES['trimag']
+            )
+        else:
+            context['error']='form not loaded with data'
+    return render(req,'trainee/add.html',context)
 def alltrainees(req):
     #get all trainees
     context={'trainees':Trainee.getalltrainee()}
     return render(req,'trainee/all.html',context)
-def add(req):
+
+def addtr(req):
 
     context={'form':Traineeformmodel()}
     context['tracks']=Track.getalltracks()

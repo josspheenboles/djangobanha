@@ -1,8 +1,10 @@
 from django.http import HttpResponseRedirect
-from django.shortcuts import render,redirect
-from .forms import Traineeformmodel
+from django.shortcuts import render,redirect,get_object_or_404
+from .forms import TraineeForm
+from .models import Track
 import track.views
-from .models import *
+from .models import Trainee
+
 # Create your views here.
 def alltrainees(req):
     #get all trainees
@@ -29,14 +31,28 @@ def update(req,id):
     context['oldtr']=Trainee.gettraineebyid(id=id)
 
     if(req.method=='POST'):
-
-        Trainee.objects.filter(id=id).update(
-            name=req.POST['trname'],
-            email=req.POST['tremail'],
-            image=req.FILES['trimg'],
-            track=Track.gettrackbyid(req.POST['trtrack'])
-
-        )
+        # oldobj=get_object_or_404(Trainee,id=id)#return error 404
+        # oldobj=Trainee.objects.get(id=id)#fire exeptopn if id not exsis
+        #django object upload trainee/imgs--->update upload
+        #oldimganame===newimagename
+        #get inatnace --->old.imge=ne
+        # check oldimage in path--->remove
+        Trainee.updatetrainee(id,req.POST['trname'],req.POST['tremail'],
+                              req.FILES['trimg'],req.POST['trtrack'])
+        # oldobj=Trainee.gettraineebyid(id=id)
+        # oldobj.name=req.POST['trname']
+        # oldobj.email=req.POST['tremail']
+        # oldobjimage=req.FILES['trimg']
+        # oldobjimage.track=Track.gettrackbyid(req.POST['trtrack'])
+        # #update old object reupload image
+        # oldobj.save()
+        # Trainee.objects.filter(id=id).update(
+        #     name=req.POST['trname'],
+        #     email=req.POST['tremail'],
+        #     image=req.FILES['trimg'],
+        #     track=Track.gettrackbyid(req.POST['trtrack'])
+        #
+        # )
         return redirect('alltrainees')
     return render(req,'trainee/update.html',context)
 def deletetr(req,id):

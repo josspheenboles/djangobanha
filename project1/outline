@@ -1,0 +1,48 @@
+Design pattern ---->mvt
+why django
+install django
+create project & apps
+route--->
+    projectname--->urls.py --->point to partial url include
+    appname--->urls.py #partial url
+views--->
+    function based view
+    class based
+    generic
+    view set--->self study
+teamplates
+    templates tags--->for static extends if block url
+    filiter tag --->self study
+    template inheritance--->full stack django extends
+settings.py
+    add app (professional ,not professionl)
+    templates--->point path templates
+    database--->cred. database
+    media_url
+    media_Root
+    staticfiles_dirs
+models.py
+    erd--->mapping-->tables
+        mapping
+        table--->class
+        column--->attribute
+        constrain---->options
+        row--->object
+        fk--->fk filed
+    erd--->
+        mapping
+            table--->class
+            column--->attribute
+            constrain---->options
+            row--->object
+            card.
+            1:1--->onetone --->class (objectofsecondeclass)
+            1:m-->onetomany--->class many(object of class of one)
+            N:M--->manytomany --->class many(objects)
+command manage.py
+    runserver [port]
+    makemigrations--->generate migration filee detect change in models
+    migrate---->apply migrations files to db
+    createsuperuser===>user login in admin panel
+admin panel
+    access code and cahnge

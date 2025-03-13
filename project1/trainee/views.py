@@ -26,6 +26,22 @@ class Addtrainee(View):
                                )
         return Trainee.gotoalltraineesroute()
 
+class Updatetrainee(View):
+    #calling when view rqueste by get method
+    def get(self,request,id):
+        context={'tracks':Track.getalltracks(),
+                 'oldtr':Track.gettrackbyid(id)}
+        return render(request,'trainee/add.html',context)
+
+    # calling when view rqueste by post method
+    def post(self, request,id):
+        Trainee.updatetrainee(id=id,name=request.POST['trname']
+                              ,email=request.POST['tremail'],
+                              image=request.POST['trimge'],
+                              trackid=request.POST['trtrack'])
+
+        return Trainee.gotoalltraineesroute()
+
 # Create your views here.
 def add(req):
     # print()

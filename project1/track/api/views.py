@@ -55,4 +55,23 @@ def getbyid_update_delete(req,id):
             return Response(
                 data={'msg':'no track to delete'}
             )
+    elif (req.method == 'PUT'):
+        #get new data
+        jsondaa=req.data
+        #serlization &get old model object
+        serobj=Track_ser.getupdatedtrack(id,jsondaa)
+        #if validate
+        if(serobj.is_valid()):
+            #update
+            serobj.save()
+            return Response(
+                data=serobj.data,
+                status=status.HTTP_200_OK
+            )
+        #else
+        else:
+            return Response(
+                data={'errors':serobj.errors},
+                status=status.HTTP_400_BAD_REQUEST
+            )
 

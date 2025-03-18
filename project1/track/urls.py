@@ -7,6 +7,6 @@ urlpatterns=[
     path('Update/<int:id>/', updatetrack),
     #endpoints
     path('hw/',views.helloworld),
-    path('all', views.getall),
+    path('all/', views.getall),
     path('all/<int:id>/', views.getbyid_update_delete),
 ]

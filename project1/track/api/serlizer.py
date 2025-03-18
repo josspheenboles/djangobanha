@@ -16,9 +16,18 @@ class Track_ser(serializers.Serializer):
     def delete(cls,id):
         Track.objects.filter(id=id).delete()
         return True
+    @classmethod
+    def getupdatedtrack(cls,id,data):
+        #get old objct
+        oldobj= Track.gettrackbyid(id)
+        return Track_ser(instance=oldobj,data=data)
     def create(self, validated_data):
         obj=Track()
         obj.name=validated_data['name']
         obj.save()
         return obj
+    def update(self, instance, validated_data):
+        instance.name=validated_data['name']
+        instance.save()
+        return instance
 

@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.shortcuts import get_object_or_404,get_list_or_404
 # Create your models here.
 class Track(models.Model):
     id=models.AutoField(primary_key=True)
@@ -13,6 +13,6 @@ class Track(models.Model):
 
     @classmethod
     def gettrackbyid(cls,id):
-        return cls.objects.get(id=id)
+        return get_object_or_404(cls,id=id)
     def __str__(self):
         return self.name

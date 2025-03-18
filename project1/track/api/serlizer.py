@@ -12,7 +12,10 @@ class Track_ser(serializers.Serializer):
     @classmethod
     def getbid(cls,id):
         return Track_ser(instance=Track.gettrackbyid(id)).data
-
+    @classmethod
+    def delete(cls,id):
+        Track.objects.filter(id=id).delete()
+        return True
     def create(self, validated_data):
         obj=Track()
         obj.name=validated_data['name']

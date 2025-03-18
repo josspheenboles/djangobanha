@@ -46,4 +46,13 @@ def getbyid_update_delete(req,id):
             data=Track_ser.getbid(id),
             status=status.HTTP_200_OK
         )
+    elif(req.method=='DELETE'):
+        if(Track_ser.delete(id)):
+            return Response(
+                status=status.HTTP_204_NO_CONTENT
+            )
+        else:
+            return Response(
+                data={'msg':'no track to delete'}
+            )
 

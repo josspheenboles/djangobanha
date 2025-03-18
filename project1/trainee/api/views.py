@@ -1,10 +1,28 @@
 from rest_framework import status
+from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.status import HTTP_200_OK
 from rest_framework.views import APIView
 from .serlizers import Trainee_ser
 from rest_framework import generics
 from ..models import Trainee
+from rest_framework.viewsets import  ViewSet,ModelViewSet
+
+@api_view(['GET'])
+def info(req):
+    return Response(
+        data={'\\':'list all trainee',
+                                    'id\\':'return trainee by id'
+                                    },
+        status=status.HTTP_103_EARLY_HINTS
+
+    )
+
+class TraineeModelViewSet(ModelViewSet):
+    queryset = Trainee.getalltrainee()
+    serializer_class = Trainee_ser
+
+
 class Trainee_List_Create_G(generics.ListCreateAPIView):
     queryset = Trainee.getalltrainee()
     serializer_class = Trainee_ser

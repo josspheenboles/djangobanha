@@ -1,3 +1,4 @@
+from django.template.context_processors import request
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
@@ -10,11 +11,8 @@ def helloworld(request):
         status=status.HTTP_200_OK
     )
 
-@api_view(['GET'])
+@api_view(['GET','POST'])
 def getall(reaquest):
-    # tracks=Track.getalltracks()
-    # jsontrack=Track_ser(tracks,many=True)
-    return Response(
-        data={'tracks':Track_ser.serlize_all(
-        )}
+      return Response(
+        data={'tracks':Track_ser.serlize_all()}
     )

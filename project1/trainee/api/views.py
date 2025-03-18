@@ -3,6 +3,14 @@ from rest_framework.response import Response
 from rest_framework.status import HTTP_200_OK
 from rest_framework.views import APIView
 from .serlizers import Trainee_ser
+from rest_framework import generics
+from ..models import Trainee
+class Trainee_List_Create_G(generics.ListCreateAPIView):
+    queryset = Trainee.getalltrainee()
+    serializer_class = Trainee_ser
+class Trainee_get_update_delete_G(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Trainee.getalltrainee()#reatrive active only
+    serializer_class = Trainee_ser
 # Trainee has fk from track
 class Trainee_List_Create(APIView):
     def get(self,req):
@@ -34,4 +42,12 @@ class Trainee_get_update_delete(APIView):
             data=Trainee_ser.getbyid(id),
             status=status.HTTP_200_OK
         )
+    def dispatch(self,req,id):
+        pass
+
+    def delet(self,req,id):
+        pass
+
+    def put(self,req,id):
+        pass
 

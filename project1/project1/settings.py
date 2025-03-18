@@ -47,6 +47,8 @@ INSTALLED_APPS = [
     'trainee.apps.TraineeConfig',
     #profeessional
     'myaccount.apps.MyaccountConfig',
+    #restfull
+    'rest_framework'
 
 
 ]

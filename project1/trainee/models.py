@@ -2,6 +2,7 @@ from django.db import models
 from track.models import Track
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
+from django.shortcuts import get_object_or_404
 # accsess class method or cerate object
 # Create your models here.
 class Trainee(models.Model):
@@ -21,7 +22,7 @@ class Trainee(models.Model):
         return  cls.objects.filter(Active=True)
     @classmethod
     def gettraineebyid(cls,id):
-        return cls.objects.get(id=id)
+        return get_object_or_404(cls,id=id)
     @staticmethod
     def removeoldimage(oldimagepath):
         import os

@@ -10,6 +10,7 @@ urlpatterns=[
     path('Update/<int:id>',Updatetrainee.as_view(),name='trupdate'),
     path('Delete/<int:id>',deletetr,name='deletetr'),
     path('API/',Trainee_List_Create.as_view()),
+    path('API/<int:id>/',Trainee_get_update_delete.as_view()),
 
 
 ]

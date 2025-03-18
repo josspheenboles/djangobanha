@@ -28,3 +28,10 @@ class Trainee_List_Create(APIView):
                 data={'errors':serobj.errors}
             )
 
+class Trainee_get_update_delete(APIView):
+    def get(self,request,id):
+        return Response(
+            data=Trainee_ser.getbyid(id),
+            status=status.HTTP_200_OK
+        )
+

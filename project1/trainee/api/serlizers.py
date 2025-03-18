@@ -9,3 +9,7 @@ class Trainee_ser(serializers.ModelSerializer):
     def getall(cls):
         return  cls(        Trainee.getalltrainee(),
                     many=True).data
+
+    @classmethod
+    def getbyid(cls,id):
+        return  Trainee_ser(Trainee.gettraineebyid(id)).data

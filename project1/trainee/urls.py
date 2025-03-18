@@ -4,7 +4,7 @@ from rest_framework import routers
 from .api.views import *
 #routers --->simple -->crud
 #routers --->Default -->crud,auth,authz,help
-router=routers.SimpleRouter()
+router=routers.DefaultRouter()
 router.register(r'API',TraineeModelViewSet)
 
 

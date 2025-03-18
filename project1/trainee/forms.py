@@ -16,6 +16,6 @@ class TraineeForm(forms.Form):
                              attrs={'text-color':'red','border':'1px'}
                          ))
     tremail=forms.CharField(required=True,widget=forms.EmailInput())
-    trtrack=forms.ChoiceField(choices=[(track.id,track.name) for track in Track.getalltracks()])
+    # trtrack=forms.ChoiceField(choices=[(track.id,track.name) for track in Track.getalltracks()])
     trimg=forms.ImageField(required=True)
     # password=forms.CharField(required=True,widget=forms.PasswordInput())

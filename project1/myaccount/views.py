@@ -62,3 +62,26 @@ def Registerview(request):
             data={'errors':customuserobjSer.errors},
             status=status.HTTP_400_BAD_REQUEST
         )
+from django.shortcuts import get_object_or_404
+
+@api_view(['GET'])
+def verify_email(req,uid,token):
+    # decode
+    uiddecoded=force_str(urlsafe_base64_decode(uid))
+    user=get_object_or_404(CustomUser,pk=uiddecoded)
+    # if uid exists & tokn valid
+    if( user is not None and accounttoken.check_token(user,token)):
+        #     update user--->email-confirm=True
+        user.email_confirm=True
+        user.save()
+        #return response
+        return Response(
+            data={'msg':'email confirmed'},
+            status=status.HTTP_200_OK
+        )
+    #else
+        #return not accept
+        return Response(
+            data={'msg':'invalid tokem'},
+            status=status.HTTP_406_NOT_ACCEPTABLE
+        )

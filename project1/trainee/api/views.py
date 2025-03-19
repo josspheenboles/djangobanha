@@ -8,9 +8,9 @@ from rest_framework import generics
 from ..models import Trainee
 from rest_framework.viewsets import  ViewSet,ModelViewSet
 from rest_framework.permissions import IsAuthenticated
-from .decorators import *
+# from .decorators import *
 @api_view(['GET'])
-@IsTrainee()
+# @IsTrainee()
 def info(req):
     return Response(
         data={'\\':'list all trainee',

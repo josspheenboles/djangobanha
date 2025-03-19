@@ -91,13 +91,13 @@ WSGI_APPLICATION = 'project1.wsgi.application'
 #django use multi database
 DATABASES = {
     'default': {
-        # 'ENGINE': 'django.db.backends.sqlite3',
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'demoz',
-        'HOST':'localhost',
-        'USER':'postgres',
-        'PASSWORD':'123',
-        'PORT':5432
+        'ENGINE': 'django.db.backends.sqlite3',
+        # 'ENGINE': 'django.db.backends.postgresql',
+        'NAME': BASE_DIR /'demoz.sqlit',
+        # 'HOST':'localhost',
+        # 'USER':'postgres',
+        # 'PASSWORD':'123',
+        # 'PORT':5432
     }
 }
 

@@ -7,6 +7,7 @@ from .serlizers import Trainee_ser
 from rest_framework import generics
 from ..models import Trainee
 from rest_framework.viewsets import  ViewSet,ModelViewSet
+from rest_framework.permissions import IsAuthenticated
 
 @api_view(['GET'])
 def info(req):
@@ -31,6 +32,7 @@ class Trainee_get_update_delete_G(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = Trainee_ser
 # Trainee has fk from track
 class Trainee_List_Create(APIView):
+    permission_classes = [IsAuthenticated]#apply get ,post
     def get(self,req):
         return Response(
             data=Trainee_ser.getall(),

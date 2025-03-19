@@ -1,6 +1,20 @@
 from django.http import HttpResponse
-
 from django.shortcuts import render
+
+from rest_framework.decorators import api_view
+from rest_framework import status
+from rest_framework.response import Response
+from .selizer import Custom_User_Serlizer
+from .models import CustomUser
+from django.template.loader import render_to_string
+from django.contrib.auth import get_user_model#
+from django.utils.encoding import force_str,force_bytes
+from django.utils.http import urlsafe_base64_decode
+from .utills import accounttoken
+from django.contrib.auth.tokens import default_token_generator
+from django.core.mail import send_mail
+
+
 
 # Create your views here.
 # normal function
@@ -14,8 +28,37 @@ def Loginview(request):
 
     # return HttpResponse('<h1>hi python track</h1>')#document.write
     return  obj
-def Registerview(requestobj):
-    #in template html & python
-    # return render(requestobj,'home.html')
-    return render(requestobj,'Register.html')
-    # return HttpResponse('<h1>Registerview</h1>')
+# def Registerview(requestobj):
+#     #in template html & python
+#     # return render(requestobj,'home.html')
+#     return render(requestobj,'Register.html')
+#     # return HttpResponse('<h1>Registerview</h1>')
+
+@api_view(['POST'])
+def Registerview(request):
+    customuserobjSer= Custom_User_Serlizer(data= request.data)
+    if(customuserobjSer.is_valid()):
+        user=customuserobjSer.save()
+        #prepare email
+        subject='Confirmation Email'
+        # message render html verify_email
+        # render(req,'pathtempl',con)
+        message=render_to_string('myaccount/verification_email.html',
+                                 {
+                                     'user':user,
+                                     'domain':request.get_host(),
+                                     #encrypted
+                                     'uid':urlsafe_base64_decode(force_bytes(user.pk)),
+                                     'token':accounttoken.make_token(user),
+                                 })
+        #send email
+        send_mail(subject,message,'noreplay@gmail.com',[user.email])
+        return Response(
+            data=customuserobjSer.data,
+            status=status.HTTP_201_CREATED
+        )
+    else:
+        return Response(
+            data={'errors':customuserobjSer.errors},
+            status=status.HTTP_400_BAD_REQUEST
+        )

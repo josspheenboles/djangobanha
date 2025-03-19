@@ -24,5 +24,6 @@ image=models.ImageField(upload_to='trainee/imgs')
 #install
  pip install Pillow
  #admin portal
-
+====================jwt=============
+pip install djangorestframework-simplejwt
 

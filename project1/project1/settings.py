@@ -48,7 +48,10 @@ INSTALLED_APPS = [
     #profeessional
     'myaccount.apps.MyaccountConfig',
     #restfull
-    'rest_framework'
+    'rest_framework',
+    #jwt token
+    'rest_framework_simplejwt'
+
 
 
 ]
@@ -151,3 +154,13 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'xxx@gmail.com'
 EMAIL_HOST_PASSWORD = 'xxx'
 AUTH_USER_MODEL = 'myaccount.CustomUser'
+
+# ======jwt
+REST_FRAMEWORK = {
+
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    )
+
+}
